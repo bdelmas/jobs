@@ -1,0 +1,16 @@
+# frozen_string_literal: true
+
+# From minitest's readme: https://github.com/seattlerb/minitest#running-your-tests
+require 'rake/testtask'
+
+# A rake task to launch all the tests by just typing `rake` in the terminal
+#
+# Follow the workflow in the video of Jack Hoy about refactoring and
+# writing shameless code that is linked in the readme of this backend test
+Rake::TestTask.new(:test) do |t|
+  t.libs << 'test'
+  t.libs << 'lib'
+  t.test_files = FileList['test/**/test_*.rb']
+end
+
+task default: 'test'
